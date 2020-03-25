@@ -1,0 +1,64 @@
+
+I. Instalare.
+
+II. Comenzi uzuale.
+
+- ls -- list files 
+ls 
+ls -l 
+
+- pwd -- print current directory
+pwd
+
+- mkdir -- make directory
+mkdir Gigel
+
+- cd -- change directory 
+cd Gigel/
+cd /home/student/Gigel  (se precizeaza calea)
+cd (fara argumente ma duce in /home/student/)
+
+- gedit, kate, gvim, vi -- editoare de text
+gedit &   (se aduaga "&" pentru a trece procesul in background)
+kate & 
+gvim test.txt
+vi test.txt   (editor text)
+
+- cp -- copy files and folders
+cp path1/test.txt path2/    (copiaza test.txt din directorul /path1 in directorul path2/)
+cp -r dir/ path/            (copiaza directorul dir/ cu subdirectoare in directorul path/)
+cp -r dir/  ./              (copiaza directorul dir/ cu subdirectoare in directorul curent)    
+
+- mv -- move
+mv  path1/test.txt path2/    (muta test.txt din directorul /path1 in directorul path2/)
+mv  dir/ path/               (muta directorul dir/ cu subdirectoare in directorul path/)
+
+- rm -- remove (Atentie stergerea este permanenta!)
+rm test.txt                  (sterge fisierul test.txt)
+rm -r dir/                   (sterge directorul dir/)
+     
+- man -- manual
+man ls
+man cp
+man rm
+  
+
+III. Alte comenzi:
+
+- top -- afiseaza utilizarea resurselor (CPU, memorie, swap)
+top   (se iese cu "q")
+
+- df -- disk space, partitii
+df -h 
+
+- ip -- afiseaza ip
+ip a
+
+- ssh -- secure shell 
+ssh -X 192.168.0.101  (conexiune secure la masina cu IP ...)
+
+- scp -- secure copy
+scp -r 192.168.0.101:dir1/  ./  (copiez dir1/ de pe masina remote in direcotrul curent)
+
+
+

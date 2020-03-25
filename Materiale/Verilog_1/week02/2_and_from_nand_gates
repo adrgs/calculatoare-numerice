@@ -1,0 +1,83 @@
+#! /usr/bin/vvp
+:ivl_version "10.1 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x563009dfcc30 .scope module, "Testbench" "Testbench" 2 25;
+ .timescale 0 0;
+v0x563009e1e110_0 .var "a", 0 0;
+v0x563009e1e1b0_0 .var "b", 0 0;
+v0x563009e1e270_0 .net "out1", 0 0, L_0x563009e1e610;  1 drivers
+v0x563009e1e360_0 .net "out2", 0 0, L_0x563009e1e730;  1 drivers
+S_0x563009dfcdb0 .scope module, "and_gate" "AND" 2 44, 2 12 0, S_0x563009dfcc30;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "in1"
+    .port_info 1 /INPUT 1 "in2"
+    .port_info 2 /OUTPUT 1 "out"
+v0x563009e1d7e0_0 .net "in1", 0 0, v0x563009e1e110_0;  1 drivers
+v0x563009e1d880_0 .net "in2", 0 0, v0x563009e1e1b0_0;  1 drivers
+v0x563009e1d950_0 .net "out", 0 0, L_0x563009e1e610;  alias, 1 drivers
+v0x563009e1da50_0 .net "w1", 0 0, L_0x563009e1e4a0;  1 drivers
+S_0x563009dfcf30 .scope module, "NAND1" "NAND" 2 18, 2 1 0, S_0x563009dfcdb0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "in1"
+    .port_info 1 /INPUT 1 "in2"
+    .port_info 2 /OUTPUT 1 "out"
+L_0x563009e1e400 .functor AND 1, v0x563009e1e110_0, v0x563009e1e1b0_0, C4<1>, C4<1>;
+L_0x563009e1e4a0 .functor NOT 1, L_0x563009e1e400, C4<0>, C4<0>, C4<0>;
+v0x563009dfd150_0 .net *"_s0", 0 0, L_0x563009e1e400;  1 drivers
+v0x563009e1cf90_0 .net "in1", 0 0, v0x563009e1e110_0;  alias, 1 drivers
+v0x563009e1d050_0 .net "in2", 0 0, v0x563009e1e1b0_0;  alias, 1 drivers
+v0x563009e1d0f0_0 .net "out", 0 0, L_0x563009e1e4a0;  alias, 1 drivers
+S_0x563009e1d230 .scope module, "NAND2" "NAND" 2 19, 2 1 0, S_0x563009dfcdb0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "in1"
+    .port_info 1 /INPUT 1 "in2"
+    .port_info 2 /OUTPUT 1 "out"
+L_0x563009e1e5a0 .functor AND 1, L_0x563009e1e4a0, L_0x563009e1e4a0, C4<1>, C4<1>;
+L_0x563009e1e610 .functor NOT 1, L_0x563009e1e5a0, C4<0>, C4<0>, C4<0>;
+v0x563009e1d450_0 .net *"_s0", 0 0, L_0x563009e1e5a0;  1 drivers
+v0x563009e1d550_0 .net "in1", 0 0, L_0x563009e1e4a0;  alias, 1 drivers
+v0x563009e1d610_0 .net "in2", 0 0, L_0x563009e1e4a0;  alias, 1 drivers
+v0x563009e1d700_0 .net "out", 0 0, L_0x563009e1e610;  alias, 1 drivers
+S_0x563009e1daf0 .scope module, "nand_gate" "NAND" 2 45, 2 1 0, S_0x563009dfcc30;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "in1"
+    .port_info 1 /INPUT 1 "in2"
+    .port_info 2 /OUTPUT 1 "out"
+L_0x563009e1e6a0 .functor AND 1, v0x563009e1e110_0, v0x563009e1e1b0_0, C4<1>, C4<1>;
+L_0x563009e1e730 .functor NOT 1, L_0x563009e1e6a0, C4<0>, C4<0>, C4<0>;
+v0x563009e1dd10_0 .net *"_s0", 0 0, L_0x563009e1e6a0;  1 drivers
+v0x563009e1de10_0 .net "in1", 0 0, v0x563009e1e110_0;  alias, 1 drivers
+v0x563009e1df20_0 .net "in2", 0 0, v0x563009e1e1b0_0;  alias, 1 drivers
+v0x563009e1e010_0 .net "out", 0 0, L_0x563009e1e730;  alias, 1 drivers
+    .scope S_0x563009dfcc30;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563009e1e110_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563009e1e1b0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563009e1e110_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563009e1e1b0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563009e1e110_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x563009dfcc30;
+T_1 ;
+    %vpi_call 2 40 "$monitor", "Time=%0d a=%b b=%b out1=%b out2=%b", $time, v0x563009e1e110_0, v0x563009e1e1b0_0, v0x563009e1e270_0, v0x563009e1e360_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "2_and_from_nand_gates.v";

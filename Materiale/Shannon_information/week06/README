@@ -1,0 +1,9 @@
+
+Ce se gaseste in directoare:
+
+Shannon_entropy -- Calculeaza Informatia Shannon corespunzatoare aparitiei unei litere intr-un text. Asadar evenimentele reprezinta "aparitia unui caracter".
+Se poate insa implementa un cod in care evenimentele reprezinta "grupuri de 2 litere", "grupuri de 3 litere", etc sau "cuvinte". Se vor obtine rezultate diferite  pentru fiecare din aceste situatii. 
+
+
+linked_lists -- exemplu de lista dublu legata si operatii cu liste (insert, delete element). Este un punct de plecare pentru un cod care implementeaza arborele lui Huffman (tema optionala).
+
