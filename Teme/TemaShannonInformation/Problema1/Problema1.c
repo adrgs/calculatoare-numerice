@@ -4,6 +4,11 @@
 #include <math.h>
 #include <ctype.h>
 
+// compile:
+// gcc -o Problema1 Problema1.c -lm
+// run:
+// ./Problema1 tom_sawyer_intro_mini.txt a|b|c
+
 //Structura folosita pentru implementarea unui tabel de dispersie
 typedef struct _nod
 {
@@ -215,7 +220,38 @@ int main(int argc, char **argv)
         sub_c(fisier_buffer, fisier_len, htable, htable_len, &cazuri_posibile);
     }
 
-    printf("%d", cazuri_posibile);
+    if (cazuri_posibile == 0)
+    {
+        puts("0 elemente gasite");
+        return -1;
+    }
+
+    //parcurgem tabela de dispersie pentru a calcula probabilitatea de aparitie a unui grup
+    for (int i = 0; i < htable_len; i++)
+    {
+        nod *p = htable[i];
+        while (p != NULL)
+        {
+            p->prob = (double)p->ap / (double)cazuri_posibile;
+            p = p->urm;
+        }
+    }
+
+    double Info = 0;
+    for (int i = 0; i < htable_len; i++)
+    {
+        nod *p = htable[i];
+        while (p != NULL)
+        {
+            if (p->prob != 0)
+            {
+                Info = Info - p->prob * log(p->prob) / log(2.0);
+            }
+            p = p->urm;
+        }
+    }
+
+    printf("Info = %f \n", Info);
 
     free(fisier_buffer);
     return 0;
