@@ -261,6 +261,19 @@ int main(int argc, char **argv)
 
     printf("Info = %f \n", Info);
 
+    //dealocam memoria folosita
+    for (int i = 0; i < htable_len; i++)
+    {
+        nod *head = htable[i];
+        while (head != NULL)
+        {
+            nod *tmp = head;
+            head = head->urm;
+            free(tmp->val);
+            free(tmp);
+        }
+    }
+    free(htable);
     free(fisier_buffer);
     return 0;
 }
