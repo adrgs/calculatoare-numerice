@@ -7,9 +7,11 @@
 // compile:
 // gcc -o Problema1 Problema1.c -lm
 // run:
-// ./Problema1 tom_sawyer_intro_mini.txt a|b|c
+// ./Problema1 tom_sawyer_intro_mini.txt a|b|c [DEBUG]
 
 //Structura folosita pentru implementarea unui tabel de dispersie
+int DEBUG = 0;
+
 typedef struct _nod
 {
     char *val;
@@ -164,7 +166,7 @@ int main(int argc, char **argv)
     char *fisier_buffer;
     char subpunct;
 
-    if (argc != 3)
+    if (argc < 3)
     {
         printf("Mod de folosire: %s fisier subpunct", argv[0]);
         return -1;
@@ -174,6 +176,10 @@ int main(int argc, char **argv)
     {
         puts("Subpunctele sunt: a, b sau c");
         return -1;
+    }
+    if (argc >= 4 && strcmp(argv[3], "DEBUG") == 0)
+    {
+        DEBUG = 1;
     }
     fhandle = fopen(argv[1], "r");
     if (!fhandle)
@@ -233,6 +239,8 @@ int main(int argc, char **argv)
         while (p != NULL)
         {
             p->prob = (double)p->ap / (double)cazuri_posibile;
+            if (DEBUG)
+                printf("%s - %d ap %f prob\n", p->val, p->ap, p->prob);
             p = p->urm;
         }
     }
