@@ -27,12 +27,13 @@ unsigned long hash(unsigned char *str, unsigned char *str_finish) // functia de 
     return hash;
 }
 
-void sub_ab(char *fisier_buffer, int fisier_len, nod **htable, int htable_len, int lungime_str)
+void sub_ab(char *fisier_buffer, int fisier_len, nod **htable, int htable_len, int *cazuri_posibile, int lungime_str)
 {
     for (int i = 0; i < fisier_len; i += lungime_str)
     {
         unsigned long h = hash(fisier_buffer + i, fisier_buffer + i + lungime_str);
         int idx = h % htable_len;
+        (*cazuri_posibile)++;
         if (htable[idx] == NULL) // prima aparitie a grupului de lungime_str litere
         {
             htable[idx] = malloc(sizeof(nod));
@@ -73,31 +74,32 @@ void sub_ab(char *fisier_buffer, int fisier_len, nod **htable, int htable_len, i
             else
             {
                 p->ap++;
-                //printf("%s nr ap: %d\n", p->val, p->ap);
+                //puts(p->val);
             }
         }
     }
 }
 
-void sub_a(char *fisier_buffer, int fisier_len, nod **htable, int htable_len)
+void sub_a(char *fisier_buffer, int fisier_len, nod **htable, int htable_len, int *cazuri_posibile)
 {
-    sub_ab(fisier_buffer, fisier_len, htable, htable_len, 2);
+    sub_ab(fisier_buffer, fisier_len, htable, htable_len, cazuri_posibile, 2);
 }
 
-void sub_b(char *fisier_buffer, int fisier_len, nod **htable, int htable_len)
+void sub_b(char *fisier_buffer, int fisier_len, nod **htable, int htable_len, int *cazuri_posibile)
 {
-    sub_ab(fisier_buffer, fisier_len, htable, htable_len, 3);
+    sub_ab(fisier_buffer, fisier_len, htable, htable_len, cazuri_posibile, 3);
 }
 
-void sub_c(char *fisier_buffer, int fisier_len, nod **htable, int htable_len)
+void sub_c(char *fisier_buffer, int fisier_len, nod **htable, int htable_len, int *cazuri_posibile)
 {
     int last_i = -1;
-    for (int i = 0; i < fisier_len; i++)
+    for (int i = 0; i < fisier_len + 1; i++)
     {
-        if (fisier_buffer[i] == ' ')
+        if (fisier_buffer[i] == ' ' || fisier_buffer[i] == '\0')
         {
-            if (i != last_i - 1)
+            if (i != last_i + 1)
             {
+                (*cazuri_posibile)++;
                 unsigned long h = hash(fisier_buffer + last_i + 1, fisier_buffer + i - 1);
                 int idx = h % htable_len;
                 int lungime_str = i - last_i - 1;
@@ -113,6 +115,7 @@ void sub_c(char *fisier_buffer, int fisier_len, nod **htable, int htable_len)
                     htable[idx][0].ap = 1;
                     htable[idx][0].prob = 0;
                     htable[idx][0].urm = NULL;
+                    //puts(htable[idx][0].val);
                 }
                 else
                 {
@@ -135,11 +138,12 @@ void sub_c(char *fisier_buffer, int fisier_len, nod **htable, int htable_len)
                         last_p->urm->ap = 1;
                         last_p->urm->prob = 0;
                         last_p->urm->urm = NULL;
+                        //puts(last_p->val);
                     }
                     else
                     {
                         p->ap++;
-                        //printf("%s nr ap: %d\n", p->val, p->ap);
+                        //puts(p->val);
                     }
                 }
             }
@@ -196,18 +200,22 @@ int main(int argc, char **argv)
         return -1;
     }
 
+    int cazuri_posibile = 0;
+
     if (subpunct == 'a')
     {
-        sub_a(fisier_buffer, fisier_len, htable, htable_len);
+        sub_a(fisier_buffer, fisier_len, htable, htable_len, &cazuri_posibile);
     }
     else if (subpunct == 'b')
     {
-        sub_b(fisier_buffer, fisier_len, htable, htable_len);
+        sub_b(fisier_buffer, fisier_len, htable, htable_len, &cazuri_posibile);
     }
     else
     {
-        sub_c(fisier_buffer, fisier_len, htable, htable_len);
+        sub_c(fisier_buffer, fisier_len, htable, htable_len, &cazuri_posibile);
     }
+
+    printf("%d", cazuri_posibile);
 
     free(fisier_buffer);
     return 0;
