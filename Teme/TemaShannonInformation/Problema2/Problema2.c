@@ -4,6 +4,11 @@
 
 // Arborele lui Huffman pentru caractere, folosind min heap
 
+// compile:
+// gcc -o Problema2 Problema2.c
+// run:
+// ./Problema2 tom_sawyer_intro_mini.txt
+
 typedef struct _nod
 {
     char val;
