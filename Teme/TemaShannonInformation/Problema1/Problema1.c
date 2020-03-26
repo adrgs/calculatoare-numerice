@@ -9,9 +9,9 @@
 // run:
 // ./Problema1 tom_sawyer_intro_mini.txt a|b|c [DEBUG]
 
-//Structura folosita pentru implementarea unui tabel de dispersie
 int DEBUG = 0;
 
+//Structura folosita pentru implementarea unui tabel de dispersie prin liste simplu inlantuite
 typedef struct _nod
 {
     char *val;
