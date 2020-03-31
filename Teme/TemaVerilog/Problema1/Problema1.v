@@ -70,10 +70,25 @@ NOT NOT1(B, w5);
 OR OR3(w4, w5, out);
 endmodule
 
+// (((A xor B) and C) or (A and (B or C))) xor (not B)
+module ExpresieCustom(A, B, C, out);
+input A, B, C;
+output out;
+wire w1, w2, w3, w4, w5, w6;
+
+XOR XOR1(A, B, w1);
+AND AND1(w1, C, w2);
+OR OR1(B, C, w3);
+AND AND2(A, w3, w4);
+OR OR2(w2, w4, w5);
+NOT NOT1(B, w6);
+XOR XOR2(w5, w6, out);
+endmodule
+
 module Testbench;
 
 reg a,b,c;
-wire outA, outB;
+wire outA, outB, outCustom;
 
 initial begin
     a = 0; b = 0; c = 0;
@@ -87,9 +102,10 @@ initial begin
 end
 
 initial begin
-    $monitor("Time=%0d A=%b B=%b C=%b outA=%b outB=%b", $time, a, b, c, outA, outB);
+    $monitor("Time=%0d A=%b B=%b C=%b outA=%b outB=%b outCustom=%b", $time, a, b, c, outA, outB, outCustom);
 end
 
 SubpunctulA SubA(a,b,c,outA);
 SubpunctulB SubB(a,b,c,outB);
+ExpresieCustom ExpCustom(a,b,c,outCustom);
 endmodule
