@@ -1,0 +1,86 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000000a15d00 .scope module, "stimulus" "stimulus" 2 36;
+ .timescale 0 0;
+v0000000000a6a960_0 .var "A", 0 0;
+v0000000000a6af00_0 .var "B", 0 0;
+RS_0000000000a271b8 .resolv tri, L_0000000000a6b1d0, L_00000000009f2800;
+v0000000000a6a8c0_0 .net8 "OUT", 0 0, RS_0000000000a271b8;  2 drivers, strength-aware
+v0000000000a6a280_0 .var "S", 0 0;
+S_0000000000aee2f0 .scope module, "m1" "my_mux" 2 41, 2 21 0, S_0000000000a15d00;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "out";
+    .port_info 1 /INPUT 1 "s";
+    .port_info 2 /INPUT 1 "i0";
+    .port_info 3 /INPUT 1 "i1";
+RS_0000000000a27068 .resolv tri, L_00000000009f2890, L_0000000000a6b060, L_0000000000a6b0d0;
+L_0000000000a6b1d0 .functor CMOS 1, v0000000000a6a960_0, RS_0000000000a27068, v0000000000a6a280_0, C4<0>;
+L_00000000009f2800 .functor CMOS 1, v0000000000a6af00_0, v0000000000a6a280_0, RS_0000000000a27068, C4<0>;
+v00000000009f25b0_0 .net "i0", 0 0, v0000000000a6a960_0;  1 drivers
+v00000000009f2650_0 .net "i1", 0 0, v0000000000a6af00_0;  1 drivers
+v00000000009f26f0_0 .net8 "out", 0 0, RS_0000000000a271b8;  alias, 2 drivers, strength-aware
+v0000000000a6a320_0 .net "s", 0 0, v0000000000a6a280_0;  1 drivers
+v0000000000a6afa0_0 .net8 "sbar", 0 0, RS_0000000000a27068;  3 drivers, strength-aware
+S_0000000000aee480 .scope module, "nt" "my_nor" 2 28, 2 3 0, S_0000000000aee2f0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "out";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000000000a23c60 .functor BUFT 1, C8<771>, C4<0>, C4<0>, C4<0>;
+L_00000000009f2790 .functor PMOS 1, L_0000000000a23c60, v0000000000a6a280_0, C4<0>, C4<0>;
+L_00000000009f2890 .functor PMOS 1, L_00000000009f2790, v0000000000a6a280_0, C4<0>, C4<0>;
+L_0000000000aecdf0 .functor BUFT 1, C8<770>, C4<0>, C4<0>, C4<0>;
+L_0000000000a6b060 .functor NMOS 1, L_0000000000aecdf0, v0000000000a6a280_0, C4<0>, C4<0>;
+L_0000000000a6b0d0 .functor NMOS 1, L_0000000000aecdf0, v0000000000a6a280_0, C4<0>, C4<0>;
+v0000000000aee610_0 .net "a", 0 0, v0000000000a6a280_0;  alias, 1 drivers
+v0000000000a15e90_0 .net "b", 0 0, v0000000000a6a280_0;  alias, 1 drivers
+v0000000000a15f30_0 .net8 "c", 0 0, L_00000000009f2790;  1 drivers, strength-aware
+v0000000000a23b20_0 .net8 "gnd", 0 0, L_0000000000aecdf0;  1 drivers, strength-aware
+v0000000000a23bc0_0 .net8 "out", 0 0, RS_0000000000a27068;  alias, 3 drivers, strength-aware
+v00000000009f2510_0 .net8 "pwr", 0 0, L_0000000000a23c60;  1 drivers, strength-aware
+    .scope S_0000000000a15d00;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a6a960_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a6af00_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a6a280_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a6a960_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a6a960_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a6a280_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a6a960_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a6af00_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a6a960_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a6a280_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0000000000a15d00;
+T_1 ;
+    %vpi_call 2 55 "$monitor", $time, " OUT=%b S=%b A=%b B=%b", v0000000000a6a8c0_0, v0000000000a6a280_0, v0000000000a6a960_0, v0000000000a6af00_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "multiplexor_cmos.v";

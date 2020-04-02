@@ -1,0 +1,198 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000000a63850 .scope module, "testbench" "testbench" 2 35;
+ .timescale 0 0;
+v0000000000a62b40_0 .var "A", 0 0;
+v0000000000a62f00_0 .var "B", 0 0;
+v0000000000a62be0_0 .var "C", 0 0;
+v0000000000a63040_0 .net "out", 0 0, v0000000000a62fa0_0;  1 drivers
+v0000000000a62dc0_0 .net "w1", 0 0, v0000000000a62460_0;  1 drivers
+v0000000000a62780_0 .net "w2", 0 0, v0000000000b6ea60_0;  1 drivers
+v0000000000a62500_0 .net "w3", 0 0, v0000000000a32cb0_0;  1 drivers
+v0000000000a628c0_0 .net "w4", 0 0, v0000000000a62e60_0;  1 drivers
+v0000000000a630e0_0 .net "w5", 0 0, v0000000000a62a00_0;  1 drivers
+S_0000000000b6e8d0 .scope module, "AND1" "AND" 2 40, 2 1 0, S_0000000000a63850;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "C";
+v0000000000a639e0_0 .net "A", 0 0, v0000000000a62f00_0;  1 drivers
+v0000000000a63a80_0 .net "B", 0 0, v0000000000a62be0_0;  1 drivers
+v0000000000b6ea60_0 .var "C", 0 0;
+E_0000000000a577c0 .event edge, v0000000000a63a80_0, v0000000000a639e0_0;
+S_0000000000b6eb00 .scope module, "AND2" "AND" 2 41, 2 1 0, S_0000000000a63850;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "C";
+v0000000000a32b70_0 .net "A", 0 0, v0000000000a62b40_0;  1 drivers
+v0000000000a32c10_0 .net "B", 0 0, v0000000000a62be0_0;  alias, 1 drivers
+v0000000000a32cb0_0 .var "C", 0 0;
+E_0000000000a57d00 .event edge, v0000000000a63a80_0, v0000000000a32b70_0;
+S_0000000000a32d50 .scope module, "AND3" "AND" 2 44, 2 1 0, S_0000000000a63850;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "C";
+v0000000000a62640_0 .net "A", 0 0, v0000000000b6ea60_0;  alias, 1 drivers
+v0000000000a63220_0 .net "B", 0 0, v0000000000a32cb0_0;  alias, 1 drivers
+v0000000000a62a00_0 .var "C", 0 0;
+E_0000000000a57e00 .event edge, v0000000000a32cb0_0, v0000000000b6ea60_0;
+S_0000000000a56640 .scope module, "NOT1" "NOT" 2 43, 2 23 0, S_0000000000a63850;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /OUTPUT 1 "B";
+v0000000000a632c0_0 .net "A", 0 0, v0000000000a62460_0;  alias, 1 drivers
+v0000000000a62e60_0 .var "B", 0 0;
+E_0000000000a57900 .event edge, v0000000000a632c0_0;
+S_0000000000a567d0 .scope module, "OR1" "OR" 2 39, 2 12 0, S_0000000000a63850;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "C";
+v0000000000a62820_0 .net "A", 0 0, v0000000000a62b40_0;  alias, 1 drivers
+v0000000000a626e0_0 .net "B", 0 0, v0000000000a62f00_0;  alias, 1 drivers
+v0000000000a62460_0 .var "C", 0 0;
+E_0000000000a57880 .event edge, v0000000000a639e0_0, v0000000000a32b70_0;
+S_0000000000a56960 .scope module, "OR2" "OR" 2 46, 2 12 0, S_0000000000a63850;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "C";
+v0000000000a62960_0 .net "A", 0 0, v0000000000a62e60_0;  alias, 1 drivers
+v0000000000a62aa0_0 .net "B", 0 0, v0000000000a62a00_0;  alias, 1 drivers
+v0000000000a62fa0_0 .var "C", 0 0;
+E_0000000000a575c0 .event edge, v0000000000a62a00_0, v0000000000a62e60_0;
+    .scope S_0000000000a567d0;
+T_0 ;
+    %wait E_0000000000a57880;
+    %load/vec4 v0000000000a62820_0;
+    %load/vec4 v0000000000a626e0_0;
+    %or;
+    %store/vec4 v0000000000a62460_0, 0, 1;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0000000000b6e8d0;
+T_1 ;
+    %wait E_0000000000a577c0;
+    %load/vec4 v0000000000a639e0_0;
+    %load/vec4 v0000000000a63a80_0;
+    %and;
+    %store/vec4 v0000000000b6ea60_0, 0, 1;
+    %jmp T_1;
+    .thread T_1, $push;
+    .scope S_0000000000b6eb00;
+T_2 ;
+    %wait E_0000000000a57d00;
+    %load/vec4 v0000000000a32b70_0;
+    %load/vec4 v0000000000a32c10_0;
+    %and;
+    %store/vec4 v0000000000a32cb0_0, 0, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_0000000000a56640;
+T_3 ;
+    %wait E_0000000000a57900;
+    %load/vec4 v0000000000a632c0_0;
+    %nor/r;
+    %store/vec4 v0000000000a62e60_0, 0, 1;
+    %jmp T_3;
+    .thread T_3, $push;
+    .scope S_0000000000a32d50;
+T_4 ;
+    %wait E_0000000000a57e00;
+    %load/vec4 v0000000000a62640_0;
+    %load/vec4 v0000000000a63220_0;
+    %and;
+    %store/vec4 v0000000000a62a00_0, 0, 1;
+    %jmp T_4;
+    .thread T_4, $push;
+    .scope S_0000000000a56960;
+T_5 ;
+    %wait E_0000000000a575c0;
+    %load/vec4 v0000000000a62960_0;
+    %load/vec4 v0000000000a62aa0_0;
+    %or;
+    %store/vec4 v0000000000a62fa0_0, 0, 1;
+    %jmp T_5;
+    .thread T_5, $push;
+    .scope S_0000000000a63850;
+T_6 ;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62b40_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62f00_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62be0_0, 0;
+    %delay 1, 0;
+    %vpi_call 2 52 "$display", "A=%b, B=%b, C=%b out=%b", v0000000000a62b40_0, v0000000000a62f00_0, v0000000000a62be0_0, v0000000000a63040_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62b40_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62f00_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62be0_0, 0;
+    %delay 1, 0;
+    %vpi_call 2 55 "$display", "A=%b, B=%b, C=%b out=%b", v0000000000a62b40_0, v0000000000a62f00_0, v0000000000a62be0_0, v0000000000a63040_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62b40_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62f00_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62be0_0, 0;
+    %delay 1, 0;
+    %vpi_call 2 58 "$display", "A=%b, B=%b, C=%b out=%b", v0000000000a62b40_0, v0000000000a62f00_0, v0000000000a62be0_0, v0000000000a63040_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62b40_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62f00_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62be0_0, 0;
+    %delay 1, 0;
+    %vpi_call 2 61 "$display", "A=%b, B=%b, C=%b out=%b", v0000000000a62b40_0, v0000000000a62f00_0, v0000000000a62be0_0, v0000000000a63040_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62b40_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62f00_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62be0_0, 0;
+    %delay 1, 0;
+    %vpi_call 2 64 "$display", "A=%b, B=%b, C=%b out=%b", v0000000000a62b40_0, v0000000000a62f00_0, v0000000000a62be0_0, v0000000000a63040_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62b40_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62f00_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62be0_0, 0;
+    %delay 1, 0;
+    %vpi_call 2 67 "$display", "A=%b, B=%b, C=%b out=%b", v0000000000a62b40_0, v0000000000a62f00_0, v0000000000a62be0_0, v0000000000a63040_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62b40_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62f00_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000a62be0_0, 0;
+    %delay 1, 0;
+    %vpi_call 2 70 "$display", "A=%b, B=%b, C=%b out=%b", v0000000000a62b40_0, v0000000000a62f00_0, v0000000000a62be0_0, v0000000000a63040_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62b40_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62f00_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000a62be0_0, 0;
+    %delay 1, 0;
+    %vpi_call 2 73 "$display", "A=%b, B=%b, C=%b out=%b", v0000000000a62b40_0, v0000000000a62f00_0, v0000000000a62be0_0, v0000000000a63040_0 {0 0 0};
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    ".\porti_var_3.v";
